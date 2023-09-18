@@ -1,0 +1,15 @@
+[versions]
+compileSdk = "34"
+minSdk = "29"
+targetSdk = "34"
+
+coroutines = "1.7.3"
+dagger = "2.48"
+
+[libraries]
+coroutines-ui = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "dagger" }
+hilt-complier = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "dagger" }
+
+[plugins]
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "dagger" }

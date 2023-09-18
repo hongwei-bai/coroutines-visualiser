@@ -14,6 +14,7 @@ captures/
 .cxx/
 *.apk
 output.json
+local.properties
 
 # IntelliJ
 *.iml
@@ -21,6 +22,9 @@ output.json
 misc.xml
 deploymentTargetDropDown.xml
 render.experimental.xml
+.gradle
+/local.properties
+.DS_Store
 
 # Keystore files
 *.jks
