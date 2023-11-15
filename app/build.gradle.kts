@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     kotlin("kapt")
     alias(libs.plugins.android.application)
@@ -9,6 +11,27 @@ plugins {
 android {
     namespace = "com.hongwei.demo.coroutinesvisualiser"
     compileSdk = libs.versions.compileSdk.get().toInt()
+
+    val staticApiToken = gradleLocalProperties(rootDir).getProperty("staticApi.token") ?: "\"ci\""
+    buildTypes {
+        getByName("debug") { buildConfigField("String", "staticApiToken", staticApiToken) }
+        getByName("release") { buildConfigField("String", "staticApiToken", staticApiToken) }
+    }
+
+    signingConfigs {
+        getByName("debug") {
+            keyAlias = "appkey"
+            keyPassword = "keyApp"
+            storeFile = file("../key/debugKeystore.jks")
+            storePassword = "keyApp"
+        }
+        create("release") {
+            keyAlias = "appkey"
+            keyPassword = "keyApp"
+            storeFile = file("../key/debugKeystore.jks")
+            storePassword = "keyApp"
+        }
+    }
 
     defaultConfig {
         applicationId = "com.hongwei.demo.coroutinesvisualiser"
@@ -97,7 +120,9 @@ dependencies {
     implementation(libs.navigation.compose)
     implementation(libs.hilt.navigation.compose)
     implementation(libs.okhttp)
+    implementation(libs.okhttpLogging)
     implementation(libs.retrofit)
+    implementation(libs.retrofitGson)
     implementation(libs.protobuf)
     implementation(libs.protoc)
     kapt(libs.hilt.complier)

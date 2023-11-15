@@ -38,7 +38,9 @@ coroutines-ui = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-an
 
 # Network
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+okhttpLogging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofitGson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 protobuf = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
 protoc = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
 mockwebserver = { module = "com.squareup.okhttp3:mockwebserver", version.ref = "okhttp" }
